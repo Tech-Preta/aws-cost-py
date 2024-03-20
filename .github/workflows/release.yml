@@ -1,0 +1,31 @@
+name: Release on Folder Change
+
+on:
+  push:
+    paths:
+      - 'aws-cost-py/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Extract version from commit
+        id: extract_version
+        run: |
+          # Extract version from the commit message using awk
+          VERSION=$(git log -1 --pretty=%B | awk '/Version:/ {print $2}')
+          echo "Version found: $VERSION"
+          echo "::set-output name=version::$VERSION"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.extract_version.outputs.version }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        env:
+          TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
