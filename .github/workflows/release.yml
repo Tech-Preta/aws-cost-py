@@ -25,7 +25,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.extract_hash.outputs.hash }}
+          tag_name: 'release-${{ steps.extract_hash.outputs.hash }}'
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         env:
           TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
