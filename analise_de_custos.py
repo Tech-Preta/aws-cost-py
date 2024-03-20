@@ -1,3 +1,7 @@
+"""
+Este é o módulo analise_de_custos.
+Ele contém funções para analisar os custos dos serviços AWS.
+"""
 import datetime
 import boto3
 
@@ -9,11 +13,10 @@ CURRENCY_CONVERSION_RATE = 5.50  # Substitua pelo valor da taxa de câmbio atual
 
 # Função para obter o período desejado de forma interativa
 def get_custom_date_range():
+    
     """
-    Obtém o período desejado de forma interativa.
-
-    Retorna:
-        tuple: Tupla contendo as datas de início e término do período.
+    Solicita ao usuário que insira as datas de início e término para a análise de custos.
+    As datas devem ser inseridas no formato AAAA-MM-DD.
     """
 
     print("Digite o período desejado para análise de custos:")
@@ -34,16 +37,9 @@ def get_custom_date_range():
 # Função para obter e listar os serviços e valores de gastos
 def list_costs_by_service(start_date, end_date):
     """
-    Obtém e lista os serviços e valores de gastos.
-
-    Args:
-        start_date (date): Data de início do período.
-        end_date (date): Data de término do período.
-
-    Retorna:
-        None: Sem retorno.
+    Obtém e lista os custos dos serviços AWS para o período de tempo especificado.
     """
-
+    
     if not start_date or not end_date:
         return
 
