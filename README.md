@@ -31,4 +31,18 @@ Para executar o script, você pode usar o seguinte comando:
 python3 analise-de-custos.py
 ```
 
+Ou
+
+```
+python3 -m analise_de_custos
+```
+
 O script irá solicitar que você insira as datas de início e término para a análise de custos. As datas devem ser inseridas no formato AAAA-MM-DD. Em seguida, o script irá listar os custos dos serviços AWS para o período de tempo especificado.
+
+## Extras
+
+- 1. **Executando o teste**:
+
+```
+python3 -m unittest tests.test_analise_de_custos
+```
