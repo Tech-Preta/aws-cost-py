@@ -1,12 +1,13 @@
-name: Code Review
+name: Code Review on Main Branch Commit
 
 permissions:
   contents: read
   pull-requests: write
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -20,8 +21,8 @@ jobs:
           # Optional
           LANGUAGE: Chinese
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
-          MODEL: gpt-3.5-turbo # https://platform.openai.com/docs/models
-          PROMPT: # example: Please check if there are any confusions or irregularities in the following code diff:
+          MODEL: gpt-4-0125-preview	# https://platform.openai.com/docs/models
+          PROMPT: Please check if there are any confusions or irregularities in the following code diff:
           top_p: 1 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p
           temperature: 1 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
           max_tokens: 10000
