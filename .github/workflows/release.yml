@@ -1,9 +1,11 @@
 name: Release on Folder Change
 
 on:
-  push:
-    paths:
-      - 'aws-cost-py/**'
+    push:
+      branches:
+        - main
+      paths:
+        - 'aws-cost-py/**'
 
 jobs:
   release:
